@@ -6,13 +6,14 @@ export default function handler(req, res) {
   res.status(200).json({
     "name": name,
     "description": `NFT of BigEyes character named ${name} with hash ${hash}`,
-    "image": getImageURL("https://characters.bigeyes.space", hash),
+    // "image": getImageURL(hash, {preamble: "https://characters.bigeyes.space"}),
+    "image": getImageURL(hash, {preamble: process.env.DOMAIN}),
     "meta": {
       "name": name,
       "appearance": appearance,
       "story": story,
       "hash": hash,
-      "url": `https://characters.bigeyes.space/?name=${name}&hash=${hash}&appearance=${appearance}&story=${story}` 
+      "url": `${process.env.DOMAIN}/?name=${name}&hash=${hash}&appearance=${appearance}&story=${story}` 
     }
   })
 }

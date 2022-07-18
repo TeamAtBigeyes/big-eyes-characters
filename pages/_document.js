@@ -2,9 +2,6 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@mui/styles'; // works with @mui/material/styles, if you prefer to use it.
 import getImageURL from '../lib/image-server';
-// import theme from '../src/theme'; // Adjust here as well
-// import { generateImagePath } from "../components/utils/generateOgImage"
-// import absoluteUrl from 'next-absolute-url'
 
 export default class MyDocument extends Document {
   render() {
@@ -12,11 +9,8 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {/* Not exactly required, but this is the PWA primary color */}
-          {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
-          {/* <meta property="og:image" content={`${origin}/og/${generateImagePath(query.hash).filename}`} /> */}
           <meta property="og:title" content={`name: ${query.name}`} />
-          <meta property="og:image" content={getImageURL("https://characters.bigeyes.space", query.hash)} />
+          <meta property="og:image" content={getImageURL(query.hash)} />
           <meta property="og:description" content={query.story} />
         </Head>
         <body>

@@ -50,7 +50,7 @@ const Character = React.forwardRef((props, ref) => {
   const {name, hash, story, appearance} = query
 
   const { basicAttributes, skills, advantages, disadvantages } = getAttributes(hash)
-  const preamble = `${galleryRoute}${hash}/?`
+  const preamble = `${galleryRoute}/${hash}/?`
   const postamble = `&size=${IMAGE_SIZE}`
 
   const avatarImage = `${preamble}set=set4${postamble}`
