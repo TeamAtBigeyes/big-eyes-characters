@@ -1,5 +1,6 @@
 import '../styles/globals.scss'
 import '../styles/Home.module.scss'
+import '../styles/sharing.css'
 import { ApolloProvider } from "@apollo/client";
 import client from "../lib/apollo-client";
 import { useRouter } from "next/router";

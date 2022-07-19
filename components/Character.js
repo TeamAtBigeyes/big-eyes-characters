@@ -16,6 +16,7 @@ import { galleryRoute } from '../lib/image-server'
 import exifr from "exifr";
 import { Unpackr } from 'msgpackr';
 import ReactButtons from "./ReactButtons";
+import SharingButtons from "./SharingButtons";
 const unpackr = new Unpackr({ mapsAsObjects: true, variableMapSize: true })
 
 const useStyles = makeStyles((theme) => ({
@@ -165,6 +166,7 @@ const Character = React.forwardRef((props, ref) => {
         <Grid item xs className={styles.layout}>
           {/* eslint-disable-next-line react/no-unknown-property */}
           {/* <div class="sharethis-inline-share-buttons"></div> */}
+          <SharingButtons styles={styles} query={query}/>
         </Grid>
       </Grid>
     </div>

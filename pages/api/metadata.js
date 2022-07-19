@@ -1,4 +1,5 @@
 import getImageURL from "../../lib/image-server"
+import getUrl from "../../lib/getUrl"
 
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 export default function handler(req, res) {
@@ -13,7 +14,7 @@ export default function handler(req, res) {
       "appearance": appearance,
       "story": story,
       "hash": hash,
-      "url": `${process.env.DOMAIN}/?name=${name}&hash=${hash}&appearance=${appearance}&story=${story}` 
+      "url": getUrl(req.query) 
     }
   })
 }
