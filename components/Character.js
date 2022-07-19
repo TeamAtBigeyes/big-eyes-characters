@@ -12,7 +12,7 @@ import TextDescription from "./TextDescription";
 import useEffectOnlyOnce from "./utils/UseEffectOnlyOnce";
 import getAttributes from "./utils/GetAttributes";
 import CharacterImage from "./utils/CharacterImage";
-import { galleryRoute } from '../lib/image-server'
+import { getBackgroundImage, getAvatarImage } from '../lib/image-server'
 import exifr from "exifr";
 import { Unpackr } from 'msgpackr';
 import ReactButtons from "./ReactButtons";
@@ -44,18 +44,14 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const IMAGE_SIZE = "1024x1024"
-
 const Character = React.forwardRef((props, ref) => {
   const {query, character } = props
   const {name, hash, story, appearance} = query
 
   const { basicAttributes, skills, advantages, disadvantages } = getAttributes(hash)
-  const preamble = `${galleryRoute}/${hash}/?`
-  const postamble = `&size=${IMAGE_SIZE}`
 
-  const avatarImage = `${preamble}set=set4${postamble}`
-  const backgroundImage = `${preamble}bgset=any${postamble}`  
+  const avatarImage = getAvatarImage(hash)
+  const backgroundImage = getBackgroundImage(hash)
 
   const [metadata, setMetadata] = useState({ rarity: 0 });
 
