@@ -30,4 +30,5 @@ Pinterest.propTypes = {
   onClick: PropTypes.func,
 }
 
+Pinterest.displayName = 'Pinterest';
 export default Pinterest

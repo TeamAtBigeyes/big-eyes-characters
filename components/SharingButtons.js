@@ -45,15 +45,15 @@ const SharingButtons = (props) => {
   const classes = useStyles()
 
   const buttons = [
-    <Email text={null} url={url} subject={subject} onClick={null} />,
-    <Facebook text={null} url={url} onClick={null} />,
-    <Twitter text={null} url={url} shareText={shareText} onClick={null} />,
-    <WhatsApp text={null} url={url} message={messsage} onClick={null} />,
-    <Telegram text={null} url={url} message={messsage} onClick={null} />,
-    <LinkedIn text={null} url={url} shareText={shareText} onClick={null} />,
-    <Pinterest text={null} url={url} shareText={shareText} mediaSrc={mediaSrc} onClick={null} />,
-    <Tumblr text={null} url={url} title={title} caption={caption} content={content} onClick={null} />,
-    <Reddit text={null} url={url} onClick={null} />
+    <Email text={null} url={url} subject={subject} onClick={null} key={1}/>,
+    <Facebook text={null} url={url} onClick={null} key={2}/>,
+    <Twitter text={null} url={url} shareText={shareText} onClick={null} key={3}/>,
+    <WhatsApp text={null} url={url} message={messsage} onClick={null} key={4}/>,
+    <Telegram text={null} url={url} message={messsage} onClick={null} key={5}/>,
+    <LinkedIn text={null} url={url} shareText={shareText} onClick={null} key={6}/>,
+    <Pinterest text={null} url={url} shareText={shareText} mediaSrc={mediaSrc} onClick={null} key={7}/>,
+    <Tumblr text={null} url={url} title={title} caption={caption} content={content} onClick={null} key={8}/>,
+    <Reddit text={null} url={url} onClick={null} key={9}/>
   ]
 
   return (

@@ -28,4 +28,5 @@ LinkedIn.propTypes = {
   onClick: PropTypes.func,
 }
 
+LinkedIn.displayName = 'LinkedIn';
 export default LinkedIn

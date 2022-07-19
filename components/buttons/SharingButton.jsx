@@ -24,4 +24,5 @@ SharingButton.propTypes = {
   onClick: PropTypes.func,
 }
 
+SharingButton.displayName = 'SharingButton';
 export default SharingButton

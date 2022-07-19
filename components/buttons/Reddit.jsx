@@ -26,4 +26,5 @@ Reddit.propTypes = {
   onClick: PropTypes.func,
 }
 
+Reddit.displayName = 'Reddit';
 export default Reddit

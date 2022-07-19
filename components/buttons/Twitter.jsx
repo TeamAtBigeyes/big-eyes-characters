@@ -28,4 +28,5 @@ Twitter.propTypes = {
   onClick: PropTypes.func,
 }
 
+Twitter.displayName = 'Twitter';
 export default Twitter

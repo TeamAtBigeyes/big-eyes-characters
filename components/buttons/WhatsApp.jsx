@@ -28,4 +28,5 @@ WhatsApp.propTypes = {
   onClick: PropTypes.func,
 }
 
+WhatsApp.displayName = 'WhatsApp';
 export default WhatsApp

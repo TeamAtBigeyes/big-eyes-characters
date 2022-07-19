@@ -33,4 +33,5 @@ Tumblr.propTypes = {
   onClick: PropTypes.func,
 }
 
+Tumblr.displayName = 'Tumblr';
 export default Tumblr

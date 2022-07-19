@@ -26,4 +26,5 @@ Google.propTypes = {
   onClick: PropTypes.func,
 }
 
+Google.displayName = 'Google';
 export default Google

@@ -28,4 +28,5 @@ Email.propTypes = {
   onClick: PropTypes.func,
 }
 
+Email.displayName = 'Email';
 export default Email

@@ -26,4 +26,5 @@ Facebook.propTypes = {
   onClick: PropTypes.func,
 }
 
+Facebook.displayName = 'Facebook';
 export default Facebook
