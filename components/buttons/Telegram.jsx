@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import SharingButton from '../SharingButton'
+import SharingButton from './SharingButton'
 import TelegramIcon from '../icons/Telegram'
 import encodeURI from '../utils/encodeURI'
 
