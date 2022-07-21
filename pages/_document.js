@@ -6,11 +6,12 @@ import getImageURL from '../lib/image-server';
 export default class MyDocument extends Document {
   render() {
     const { query } = this.props
+    const image = getImageURL(query.hash, {preamble: process.env.DOMAIN, imageSize: "512x512" })
     return (
       <Html lang="en">
         <Head>
           <meta property="og:title" content={`name: ${query.name}`} />
-          <meta property="og:image" content={getImageURL(query.hash, { imageSize: "512x512" })} />
+          <meta property="og:image" content={image} />
           <meta property="og:description" content={query.story} />
         </Head>
         <body>
