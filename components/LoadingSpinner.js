@@ -6,16 +6,17 @@ import { Container } from "@mui/material";
 
 const useStyles = makeStyles((theme) =>
   createStyles({
-    appLogo: {
-      animation: "spin infinite 20s linear",
-      height: "40vmin",
-      pointerEvents: "none"
-    },
     appHeader: {
+      textAlign: "center",
       backgroundColor: theme.palette.background.default,
       minWidth: "100%",
       minHeight: "100vh",
       display: "flex"
+    },
+    appLogo: {
+      animation: "spin infinite 20s linear",
+      height: "40vmin",
+      pointerEvents: "none"
     }
   })
 );

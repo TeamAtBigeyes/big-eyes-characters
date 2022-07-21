@@ -1,5 +1,4 @@
 import Link from "next/link"
-import Home from './Home'
 import Character from './Character'
 
 import React from "react";
@@ -10,8 +9,9 @@ import LoadingSpinner from "./LoadingSpinner";
 const useStyles = makeStyles((theme) => ({
   // Styling material components
   root: {
-    minHeight: "100vh",
-    display: "flex",    
+    minHeight: "112vh",
+    display: "flex",
+    width: "99.485%",
     backgroundColor: theme.palette.background.default,
   }
 }));
@@ -46,7 +46,7 @@ function MainComponent(props) {
         <Link href="/">
           <Character query={theQuery} character={data.character}/>
         </Link>
-        {/* <Link href="/home">
+        {/* <Link href="/">
           <Home />
         </Link> */}
     </div>
