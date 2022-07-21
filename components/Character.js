@@ -130,6 +130,10 @@ const Character = React.forwardRef((props, ref) => {
   const y1 = 1
 
   const rarityInLogScale = (y) => (x1 - x0)*(Math.log(y) - Math.log(y0))/(Math.log(y1) - Math.log(y0)) + x0
+  const toDigits = (a, b) => {
+    const factor = 10^b
+    return Math.trunc(a*factor)/factor
+  }
   const rarityLog = rarityInLogScale(metadata.rarity)
 
   const dx = basicAttributes[0]
@@ -179,7 +183,7 @@ const Character = React.forwardRef((props, ref) => {
               <Attribute name="Rarity" value={`${metadata.rarity}`} styles={styles} >
                 <PrettoSlider
                   // disabled
-                  value={rarityLog.toFixed(2)}
+                  value={toDigits(rarityLog, 2)}
                   marks={true}
                   step={10}
                   // valueLabelDisplay="on"

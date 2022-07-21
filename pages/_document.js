@@ -10,7 +10,7 @@ export default class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <meta property="og:title" content={`name: ${query.name}`} />
-          <meta property="og:image" content={getImageURL(query.hash)} />
+          <meta property="og:image" content={getImageURL(query.hash, { imageSize: "512x512" })} />
           <meta property="og:description" content={query.story} />
         </Head>
         <body>
