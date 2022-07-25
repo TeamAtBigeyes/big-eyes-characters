@@ -1,6 +1,6 @@
 import prisma from "../../../lib/prisma";
 
-export default async (req, res) => {
+ const slugHandle = async (req, res) => {
   const slug = req.query["slug"];
 
   if (!slug || typeof slug !== "string") {
@@ -33,3 +33,5 @@ export default async (req, res) => {
   // return res.redirect(data.url);
   return res.json(data);
 }
+
+export default slugHandle
