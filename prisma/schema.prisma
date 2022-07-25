@@ -42,11 +42,13 @@ model Character {
 }
 
 model ShortLink {
-  id  Int @id @default(autoincrement())
+  slug        String   @id @default(cuid())
+  // id  Int @id @default(autoincrement())
+  // slug String @unique
+
   createdAt DateTime @default(now())
 
-  url String @db.VarChar(2000)
-  slug String @unique
+  url String @db.VarChar(2000) @unique
 
   @@index(slug)
 }

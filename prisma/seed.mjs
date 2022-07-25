@@ -26,6 +26,14 @@ async function main() {
     })
     console.log(`Created user with id: ${user.id}`)
   }
+  const shortLink = await prisma.shortLink.create(
+    {
+      data: {
+        url: "https://graphql.org/"
+      }
+    }
+  )
+  console.log(`Created shortLink with slug: ${shortLink.slug}`)
   console.log(`Seeding finished.`)
 }
 

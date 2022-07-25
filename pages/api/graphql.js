@@ -25,6 +25,13 @@ const typeDefs = gql`
     wows:    Int
   }
 
+  type ShortLink {
+    createdAt: String
+
+    slug: String
+    url: String
+  }
+
   input CharacterInput {
     hash: String
   }
@@ -37,6 +44,7 @@ const typeDefs = gql`
     author: User
   }
   type Mutation {
+    createShortLink(url: String!): ShortLink
     like(character: CharacterInput!): Character
     lol(character: CharacterInput!): Character
     loveIt(character: CharacterInput!): Character
@@ -54,6 +62,26 @@ const findCharacter = async (prismaCharacter, hash) => {
       hash
     }
   })
+}
+
+const findShortLink = async (prismaShortLink, url) => {
+  return await prismaShortLink.findFirst({
+    where: {
+      url
+    }
+  })
+}
+
+const findOrCreateShortLink = async (prismaShortLink, url) => {
+  let shortLink = await findShortLink(prismaShortLink, url)
+  if (shortLink === null){
+    shortLink = await prismaShortLink.create({
+      data: {
+        url
+      }
+    })
+  }
+  return shortLink
 }
 
 const findOrCreateCharacter = async (prismaCharacter, hash) => {
@@ -96,6 +124,9 @@ const resolvers = {
     },
   },
   Mutation: {
+    createShortLink: async (_, { url }, context) => {
+      return await findOrCreateShortLink(context.prisma.shortLink, url)
+    },
     like: async (_, { character: { hash }}, context) => {
       let character = await findOrCreateCharacter(context.prisma.character, hash)
       character = await context.prisma.character.update({
