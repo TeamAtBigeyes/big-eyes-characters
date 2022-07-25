@@ -23,7 +23,7 @@ export default async (req, res) => {
 
     res.setHeader("Content-Type", "application/json");
     res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+    res.setHeader("Cache-Control", "s-maxage=1000000000, stale-while-revalidate");
 
     res.send(JSON.stringify({ message: "slug not found" }));
 
