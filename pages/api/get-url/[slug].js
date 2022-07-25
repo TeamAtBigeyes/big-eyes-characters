@@ -21,6 +21,10 @@ export default async (req, res) => {
   if (!data) {
     res.statusCode = 404;
 
+    res.setHeader("Content-Type", "application/json");
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Cache-Control", "s-maxage=1, stale-while-revalidate");
+
     res.send(JSON.stringify({ message: "slug not found" }));
 
     return;
