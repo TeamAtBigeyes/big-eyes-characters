@@ -5,6 +5,18 @@ import Card from "@mui/material/Card";
 import getUrl from '../lib/getUrl';
 import { makeStyles } from "@mui/styles";
 import getImageURL from '../lib/image-server';
+import { gql, useMutation } from '@apollo/client';
+import { useEffect, useState } from 'react';
+
+
+const CREATE_SHORTLINK = gql`
+  mutation CreateShortLinkMutation($url: String!){
+    createShortLink(url:$url){
+      url
+      slug
+    }
+  }
+`
 
 const useStyles = makeStyles((theme) => ({
   item: {
@@ -25,6 +37,7 @@ const useStyles = makeStyles((theme) => ({
 );
 
 const SharingButtons = (props) => {
+  const [link, setLink] = useState("");
   const { styles, query } = props
   const domain = process.env.NEXT_PUBLIC_DOMAIN
   const url = getUrl(domain, query)
@@ -44,16 +57,33 @@ const SharingButtons = (props) => {
 
   const classes = useStyles()
 
+  const [createShortLink, {}] = useMutation(CREATE_SHORTLINK, { variables: { url }, onCompleted: null});
+
+  const getShortenedLink = async () => {
+    const { data } = await createShortLink();
+    return `${domain}/s/${data.createShortLink.slug}`;
+  }
+  
+  const getAndSetLink = async () => {
+    const theLink = await getShortenedLink();
+    setLink(theLink);
+  }
+
+  // useEffect(() => {
+  //   getAndSetLink();
+  // }, []);
+
+
   const buttons = [
-    <Email text={null} url={url} subject={subject} onClick={null} key={1}/>,
-    <Facebook text={null} url={url} onClick={null} key={2}/>,
-    <Twitter text={null} url={url} shareText={shareText} onClick={null} key={3}/>,
-    <WhatsApp text={null} url={url} message={messsage} onClick={null} key={4}/>,
-    <Telegram text={null} url={url} message={messsage} onClick={null} key={5}/>,
-    <LinkedIn text={null} url={url} shareText={shareText} onClick={null} key={6}/>,
-    <Pinterest text={null} url={url} shareText={shareText} mediaSrc={mediaSrc} onClick={null} key={7}/>,
-    <Tumblr text={null} url={url} title={title} caption={caption} content={content} onClick={null} key={8}/>,
-    <Reddit text={null} url={url} onClick={null} key={9}/>
+    <Email text={null} url={link} subject={subject} onClick={getAndSetLink} key={1}/>,
+    <Facebook text={null} url={link} onClick={getAndSetLink} key={2}/>,
+    <Twitter text={null} url={link} shareText={shareText} onClick={getAndSetLink} key={3}/>,
+    <WhatsApp text={null} url={link} message={messsage} onClick={getAndSetLink} key={4}/>,
+    <Telegram text={null} url={link} message={messsage} onClick={getAndSetLink} key={5}/>,
+    <LinkedIn text={null} url={link} shareText={shareText} onClick={getAndSetLink} key={6}/>,
+    <Pinterest text={null} url={link} shareText={shareText} mediaSrc={mediaSrc} onClick={getAndSetLink} key={7}/>,
+    <Tumblr text={null} url={link} title={title} caption={caption} content={content} onClick={getAndSetLink} key={8}/>,
+    <Reddit text={null} url={link} onClick={getAndSetLink} key={9}/>
   ]
 
   return (
