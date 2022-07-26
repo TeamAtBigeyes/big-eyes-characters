@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) =>
       display: "flex"
     },
     appLogo: {
-      animation: "spin infinite 20s linear",
+      animation: "spin infinite 10s linear",
       height: "40vmin",
       pointerEvents: "none"
     }
@@ -29,7 +29,7 @@ function LoadingSpinner() {
       <Image src={logo} priority={true} className={classes.appLogo} alt="logo" />
       <style>{`
         @keyframes spin {
-          0% { transform: rotate(0deg); }
+          0% { transform: rotate(0deg);}
           100% { transform: rotate(360deg); }
         }
       `}</style>
