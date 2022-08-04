@@ -6,11 +6,13 @@ import MainComponent from '../components/MainComponent'
 import { useRouter } from "next/router";
 import ClientOnly from "../components/ClientOnly";
 import ColorModeContext from '../styles/ColorModeContext';
+import getCharacterMemo from "../lib/get-character-memo"
 
-export const getServerSideProps = async context => {
-  const { query } = context
-  return { props: { } };
-}
+// export const getServerSideProps = async context => {
+//   const { query } = context
+//   console.log(query)
+//   return { props: { } };
+// }
 
 const getDesignTokens = (mode) => ({
   palette: {
@@ -45,7 +47,7 @@ const getDesignTokens = (mode) => ({
 function App(props) {
   const prefersDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
   const router = useRouter();
-  const { query } = router
+  const query = getCharacterMemo(router.query)
   const mode = prefersDarkMode ? "dark" : "light";
   // Update the theme only if the mode changes
   const theme = React.useMemo(() => createTheme(getDesignTokens(mode)), [mode]);
