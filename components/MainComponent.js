@@ -16,8 +16,13 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-function MainComponent({query}) {
+function MainComponent(props) {
+  const { query } = props
   const classes = useStyles();
+
+  let theQuery = query
+  if (query.hash === undefined)
+    theQuery.hash="0x0000000000000000000000000000000000000000"
 
   const { loading, error, data } = useQuery(gql`
     query Character ($hash: String) {
@@ -30,7 +35,7 @@ function MainComponent({query}) {
       }
     }
   `, {variables: {
-    "hash": query.hash
+    "hash": theQuery.hash
   }});
 
   if (loading) return(<LoadingSpinner />);
@@ -39,7 +44,7 @@ function MainComponent({query}) {
   return (
     <div className={classes.root}>
         <Link href="/">
-          <Character query={query} character={data.character}/>
+          <Character query={theQuery} character={data.character}/>
         </Link>
         {/* <Link href="/">
           <Home />

@@ -2,7 +2,6 @@ import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@mui/styles'; // works with @mui/material/styles, if you prefer to use it.
 import getImageURL from '../lib/image-server';
-import getCharacterMemo from '../lib/get-character-memo';
 
 export default class MyDocument extends Document {
   render() {
@@ -64,7 +63,7 @@ MyDocument.getInitialProps = async (ctx) => {
   const initialProps = await Document.getInitialProps(ctx);
 
   return {
-    query: getCharacterMemo(query),
+    query,
     // origin,
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
